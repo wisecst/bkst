@@ -1,0 +1,47 @@
+/* Two-device project visualization and attempt gate; lesson chrome comes from common/. */
+.intermediate-project .project-goal{font-size:30px;font-weight:800;color:#17375e;margin:0 0 12px}
+.intermediate-project .project-extension{font-size:25px;line-height:1.4;margin:10px 0;color:#17375e}
+.project-intro-demo{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.project-live{--project-photo-height:260px;--project-sign-height:130px;--project-servo-height:190px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:20px;width:100%;color:#17375e;font-size:26px;font-weight:800}
+.project-live section{min-width:0;text-align:center}
+.project-live figure{position:relative;margin:0 auto;width:100%;height:var(--project-photo-height)}
+.project-live img{width:100%;height:100%;object-fit:contain}
+.project-live input[type=range]{width:90%;height:32px;accent-color:#1598b9}
+.project-live output{font-size:36px;font-weight:900;color:#145bc0}
+.project-live .project-pot{width:100%;height:100%}
+.project-live .project-sign{height:var(--project-sign-height);width:150px;overflow:visible}
+.project-live .project-servo{height:var(--project-servo-height);width:100%;object-fit:contain}
+.project-live .project-servo svg{width:100%;height:100%}
+.project-live .project-status{display:block;padding:16px;border:3px solid #a9cce4;border-radius:14px;background:#eaf5ff;font-size:32px}
+.project-live[data-alarm=true] .project-status{border-color:#e05837;background:#fff0d1;color:#a12c0f}
+.project-live .project-threshold-label{font-size:22px;display:block}
+.project-live .project-threshold{width:100px;font:inherit}
+.project-live .project-auto{font:inherit;border:2px solid #a9cce4;border-radius:12px;background:#eaf5ff;color:#17375e;padding:8px 18px}
+.project-live .project-range-stage{position:relative;height:230px;border-bottom:5px solid #a9cce4}
+.project-range-stage>img{position:absolute;left:0;bottom:15px;width:32%;height:80px}
+.project-range-stage .project-target{position:absolute;bottom:16px;width:30px;height:190px;border:3px solid #c48b16;background:#ffdf85;border-radius:10px;transform:translateX(-50%)}
+.project-range-stage .project-distance-line{position:absolute;left:30%;bottom:60px;height:5px;background:#3289bd}
+.project-attempt{display:flex;flex-direction:column;gap:14px;padding:28px;max-width:1100px;margin:auto;font-size:28px;color:#17375e}
+.project-attempt h2{font-size:38px;margin:0}
+.project-attempt textarea{display:block;width:100%;box-sizing:border-box;font:inherit;border:2px solid #a9cce4;border-radius:12px;padding:12px}
+.project-attempt .entry-goal-btn{align-self:flex-start;font:inherit}
+.project-attempt input{font:inherit;width:120px}
+.project-gate-message{margin:0;color:#b33218;font-weight:800}
+.project-inquiry{font-size:32px;line-height:1.5;color:#17375e;padding:14px}
+.project-inquiry p{margin:12px 0}
+.project-inquiry a{font-size:24px;margin-right:24px}
+.project-inquiry :is(input,select){font:inherit;max-width:100%}.project-inquiry input{width:140px}
+.project-inquiry strong{color:#145bc0;font-size:36px}
+.intermediate-project #workspace #module{left:2%;top:16%;transform:none}
+.intermediate-project #workspace #board{left:56%;top:29%;transform:none}
+.intermediate-project #solutionCode{height:100%}
+/* Result content fits the vacant area below the code without changing its scale. */
+.intermediate-project .ec-popup:not(.ec-pin13) .project-live{--project-photo-height:140px;--project-sign-height:90px;--project-servo-height:130px;--scarecrow-servo-height:120px;font-size:22px;gap:12px}
+.intermediate-project .ec-popup:not(.ec-pin13) .project-live p{margin:4px 0}
+.intermediate-project .ec-popup:not(.ec-pin13) .project-live output{font-size:var(--project-readout-size,28px)}
+.intermediate-project .ec-popup:not(.ec-pin13) .project-live .project-auto{padding:4px 16px}
+.intermediate-project .ec-popup:not(.ec-pin13) .project-live .project-range-stage{height:var(--project-photo-height)}
+.intermediate-project .ec-popup:not(.ec-pin13) .project-live .project-target{height:calc(var(--project-photo-height) - 15px)}
+.project-discovery{font-size:25px;line-height:1.35;margin:4px 0}.project-discovery p{margin:6px 0}.project-record{flex:none;max-height:210px;overflow:auto;font:22px/1.35 sans-serif;color:#17375e;padding:8px;border:1px solid #a9cce4;border-radius:12px;background:#f4faff}.project-record summary{cursor:pointer;font-weight:800}.project-record table{border-collapse:collapse;width:100%;table-layout:fixed}.project-record th,.project-record td{border:1px solid #bdd0e3;padding:5px}.project-record input{box-sizing:border-box;width:100%;min-width:0;font:inherit}.project-group-controls{display:flex;align-items:center;gap:12px;font-size:22px}.project-group-controls button{font:inherit;border:2px solid #a9cce4;border-radius:10px;background:#fff;padding:6px 12px}.project-group-controls button[aria-pressed=true]{border-color:#146fba;background:#eaf5ff}.project-plan-field{font-size:24px;display:flex;align-items:center;gap:12px;margin:6px 0}.project-plan-field textarea{flex:1;font:inherit;min-height:45px}.intermediate-project :is(#analysis,#improve)>.device-explanation-body{overflow:auto}.scarecrow-live{--project-readout-size:24px}.scarecrow-readouts{font-size:22px;line-height:1.5}.scarecrow-live .project-servo{height:var(--scarecrow-servo-height,160px)}.scarecrow-live label{display:block;font-size:24px}.scarecrow-live[data-state=위험] .project-status{border-color:#d23837;background:#ffe5df;color:#9a2626}.scarecrow-live[data-state=주의] .project-status{border-color:#d69519;background:#fff3cd;color:#845400}.project-verification-live{flex:1;min-height:0;display:flex;align-items:center}
+/* A horizontal control strip fits below the longest script without moving any code. */
+.scarecrow-compact{height:70px;padding-right:32px;box-sizing:border-box;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}.scarecrow-compact>section:first-child{display:grid;grid-template-columns:1fr 1fr 110px;align-items:center;gap:8px}.scarecrow-compact>section:last-child{display:grid;grid-template-columns:100px 90px minmax(0,1fr);align-items:center;gap:8px}.scarecrow-compact .project-servo{height:64px}.scarecrow-compact label{font-size:20px;line-height:1.2}.scarecrow-compact .scarecrow-readouts{font-size:20px;line-height:1.25}.scarecrow-compact .project-auto{font-size:18px}.scarecrow-compact .project-status{padding:10px 6px}.scarecrow-compact .project-servo svg{display:block}

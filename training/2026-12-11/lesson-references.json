@@ -1,0 +1,50 @@
+{
+  "assetTarget": "phycom",
+  "publishedBase": "../../middle/phyCom/",
+  "stage": "common/stage.html",
+  "modules": {
+    "potentiometer": {
+      "entry": "potentiometer/index.html"
+    },
+    "servo-motor": {
+      "entry": "servo-motor/index.html"
+    },
+    "buzzer": {
+      "entry": "buzzer/index.html"
+    },
+    "dial-direction-sign": {
+      "entry": "projects/dial-direction-sign/index.html"
+    },
+    "distance-alarm": {
+      "entry": "projects/distance-alarm/index.html"
+    },
+    "scarecrow": {
+      "entry": "projects/scarecrow/index.html"
+    },
+    "ultrasonic": {
+      "entry": "ultrasonic/index.html"
+    }
+  },
+  "sessions": {
+    "1": {
+      "module": "potentiometer",
+      "firstPage": "#concept",
+      "lastPage": "#volume"
+    },
+    "2": {
+      "module": "potentiometer",
+      "firstPage": "#moonSetup",
+      "lastPage": "#moonCode"
+    },
+    "3": {
+      "module": "servo-motor",
+      "firstPage": ".motor-concept",
+      "lastPage": ".servo-page5"
+    },
+    "buzzer-demo": {
+      "module": "buzzer",
+      "firstPage": "#studentWorkPage2",
+      "lastPage": "#studentWorkPage2"
+    }
+  }
+}

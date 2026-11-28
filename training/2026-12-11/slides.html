@@ -1,0 +1,1159 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>경남형 AI·디지털 기반 정보교육 수업모형 개발 연수</title><style>
+:root{font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;color:#092354;background:#f9fcff}*{box-sizing:border-box}html,body{margin:0;height:100%}body{overflow:hidden}.slide{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:6vh 5vw;background:radial-gradient(circle at 65% 42%,#fff 0%,#fff 35%,#f3f9ff 100%)}
+@media (max-width: 900px) { .slide { padding: 5vw; } }
+@media print { .slide { height: 100vh; } }
+
+.slide.cover {
+  min-height: 100svh;
+  padding: 0 4vw max(72px, 9svh);
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  align-content: center;
+  row-gap: clamp(10px, 1.6svh, 18px);
+  color: #101a46;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 0 0, #bed9f9, transparent 24%),
+    radial-gradient(ellipse at 100% 0, #bed9f9, transparent 23%),
+    linear-gradient(150deg, #f5f8fd, #f8fafd 49%, #edf4ff);
+}
+
+.cover .wave {
+  position: absolute;
+  z-index: -1;
+  left: -12%;
+  bottom: -28svh;
+  width: 125%;
+  height: 39svh;
+  border-radius: 50%;
+  transform: rotate(-4deg);
+  background: linear-gradient(105deg, #9ec8fd, #75aaf4);
+}
+
+.cover .training-name {
+  justify-self: center;
+  margin: 0;
+  padding: .45em 1.15em;
+  border-radius: 100px;
+  background: linear-gradient(110deg, #e2edfb, #cfddf7);
+  color: #385f91;
+  font-size: clamp(12px, 1.25vw, 22px);
+  font-weight: 750;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.cover .training-name span { color: #2563eb; }
+
+.cover .cover-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1.4vw;
+  width: 100%;
+}
+
+.cover .cover-copy { display: grid; justify-items: center; }
+
+.cover .details {
+  margin: 0;
+  border-radius: 100px;
+  background: linear-gradient(110deg, #e2edfb, #cfddf7);
+}
+
+.cover .subject {
+  margin: 0 0 .65em;
+  font-size: clamp(13px, min(1.9vw, 4svh), 32px);
+  font-weight: 800;
+}
+
+.cover .subject strong { color: #2563eb; font-weight: 900; }
+
+.cover h1 {
+  margin: .16em 0 .3em;
+  font: 400 clamp(27px, min(6.45vw, 11.7svh), 124px) / 1.06 Jua, sans-serif;
+  letter-spacing: -.015em;
+  white-space: nowrap;
+}
+
+.cover .title-second { font-size: 1.16em; font-weight: inherit; }
+
+.cover h1 span {
+  position: relative;
+  color: #1647b0;
+}
+
+.cover h1 span::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -.105em;
+  height: .18em;
+  border-top: .08em solid #ffca4a;
+  border-radius: 50%;
+  transform: rotate(-2deg);
+}
+
+.cover .details {
+  display: flex;
+  align-items: center;
+  gap: .72em;
+  padding: .45em .95em;
+  font-size: clamp(13px, min(1.7vw, 4svh), 29px);
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.cover .date { display: inline-flex; align-items: center; gap: .45em; }
+.cover .date svg { width: 1.1em; height: 1.1em; flex: none; }
+.cover .divider { width: 1px; height: 1em; background: #a6bde0; }
+
+.cover .cover-art {
+  width: 100%;
+  height: min(23vw, 36svh);
+  object-fit: contain;
+}
+
+.cover .speaker {
+  justify-self: center;
+  margin: 0;
+  padding: .4em .9em;
+  border: 1px solid #c6daf5;
+  border-radius: 100px;
+  background: #e2edfb;
+  font-size: clamp(13px, 1.35vw, 24px);
+  font-weight: 700;
+}
+
+@media print { .slide.cover[hidden] { display: grid; } }
+
+@media (max-width: 800px) and (orientation: portrait) {
+  .cover .cover-body {
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+    gap: 1.6svh 4vw;
+  }
+
+  .cover .cover-copy { grid-area: 1 / 1 / 2 / 3; }
+  .cover h1 { font-size: clamp(26px, 9.25vw, 75px); }
+  .cover .cover-art { height: min(33vw, 23svh); }
+}
+</style><style>.slide[hidden]{display:none}.lesson{--training-body-inset:7vw;justify-content:flex-start;text-align:left;align-items:stretch;padding:var(--training-title-top) var(--training-body-inset) 10vh;gap:1.5vh;background:linear-gradient(135deg,#fff 45%,#eaf4ff)}
+.lesson.agenda-slide { height: 100vh; overflow: auto; padding-bottom: max(6vh, 54px); }
+.agenda {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: clamp(6px, 1vw, 18px);
+  flex: 1;
+  margin-top: clamp(20px, 5vh, 48px);
+}
+.agenda article {
+  --agenda-heading: #105cc9;
+  --agenda-border: #72abef;
+  --agenda-card: #deefff;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0 clamp(8px, 1.15vw, 20px) clamp(8px, 1.15vw, 20px);
+  border: 2px solid var(--agenda-border);
+  border-radius: clamp(14px, 2.3vw, 36px);
+  background: #ffffffc4;
+}
+.agenda article:last-child {
+  --agenda-heading: #16803e;
+  --agenda-border: #78c989;
+  --agenda-card: #e3f7e8;
+}
+.agenda h3 {
+  margin: -.58em .25em .34em;
+  padding: .28em .55em;
+  border-radius: 1.5em;
+  background: var(--agenda-heading);
+  color: white;
+  font: 400 clamp(19px, min(3.1vw, 6.3vh), 51px)/1.15 Jua, sans-serif;
+  text-align: center;
+  word-break: keep-all;
+}
+.agenda h3 strong { color: #ffe64c; font-weight: inherit; }
+.agenda ol {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(min-content, 1fr));
+  gap: clamp(6px, 1vw, 16px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: agenda-step;
+}
+.agenda li {
+  position: relative;
+  counter-increment: agenda-step;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  min-width: 0;
+  gap: .25em;
+  padding: .4em .25em;
+  border-radius: clamp(9px, 1.8vw, 29px);
+  background: var(--agenda-card);
+  color: #102b61;
+  font-size: clamp(16px, min(2.55vw, 5.1vh), 42px);
+  font-weight: 850;
+  line-height: 1.2;
+  text-align: center;
+  word-break: keep-all;
+}
+.agenda li :is(img, svg) {
+  width: clamp(34px, 10vw, 172px);
+  max-width: 100%;
+  height: clamp(24px, 13.5vh, 135px);
+  object-fit: contain;
+}
+.agenda li::before {
+  content: counter(agenda-step) / "";
+  position: absolute;
+  top: .4em;
+  left: .4em;
+  display: grid;
+  place-items: center;
+  width: 1.55em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--agenda-heading);
+  color: white;
+  font-size: .72em;
+  font-weight: 800;
+  line-height: 1;
+}
+.agenda-arrow {
+  align-self: center;
+  width: clamp(24px, 4.3vw, 76px);
+  aspect-ratio: 1.18;
+  background: linear-gradient(90deg, #70b7ff, #0860df);
+  clip-path: polygon(0 26%, 54% 26%, 54% 0, 100% 50%, 54% 100%, 54% 74%, 0 74%);
+}
+@media (max-width: 700px) and (orientation: portrait) {
+  .agenda { grid-template-columns: 1fr; flex: none; }
+  .agenda-arrow { justify-self: center; margin-block: 2px 18px; transform: rotate(90deg); }
+  .agenda li :is(img, svg) { height: clamp(32px, 6.6vh, 58px); }
+}
+
+.lesson:is(.direction,.diagram-slide) {
+  --training-body-inset: clamp(12px, 4.15vw, 72px);
+  height: 100vh;
+  overflow: auto;
+  padding: var(--training-title-top) var(--training-body-inset) max(6vh, 54px);
+  gap: 1.15vh;
+}
+.result {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1vh;
+  padding: 1.25vh 1.5vw;
+  background: #eef5ff;
+  border-radius: clamp(9px, 1.1vw, 17px);
+}
+.model-comparison {
+  display: grid;
+  grid-template-rows: auto minmax(min-content, 1fr);
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(8px, 2vh, 18px);
+  flex: 1;
+  margin-top: .8vh;
+}
+.textbook-path {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(8px, 2vw, 34px);
+  padding: .45em .65em;
+  border-radius: .55em;
+  background: #eaf0f7;
+  color: #304c73;
+  margin: 0;
+}
+.textbook-path dt { font-size: clamp(14px, min(2.15vw, 4.3vh), 34px); font-weight: 850; }
+.textbook-path dd { display: flex; align-items: center; justify-content: center; gap: 1.6vw; margin: 0; font-size: clamp(14px, min(2.15vw, 4.3vh), 34px); font-weight: 750; }
+.model-path { display: grid; grid-template-rows: auto minmax(min-content, 1fr); gap: 1vh; min-width: 0; }
+.model-path .sequence-heading { padding: .3em .55em; border-radius: .6em; color: #fff; background: #123c82; }
+.model-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 2.45vw, 42px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.model-step {
+  --model-accent: #167152;
+  --model-wash: #e5f6ee;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(min-content, 1fr);
+  min-width: 0;
+  border-radius: .65em;
+  background: var(--model-wash);
+  font-size: clamp(13px, min(2.34vw, 4.65vh), 38px);
+  text-align: center;
+  word-break: keep-all;
+}
+.model-step:nth-child(2) { --model-accent: #105bb0; --model-wash: #e8f2ff; }
+.model-step:nth-child(3) { --model-accent: #5532a0; --model-wash: #f2ebff; }
+.model-step:nth-child(4) { --model-accent: #792d78; --model-wash: #f8edf8; }
+.model-step + .model-step::before { content: "→" / ""; position: absolute; right: 100%; top: 48%; width: clamp(12px, 2.45vw, 42px); color: #1647b0; font-weight: 850; }
+.model-step strong { padding: .34em .25em; background: var(--model-accent); border-radius: .65em .65em 0 0; color: white; }
+.model-step img { align-self: center; justify-self: center; width: 90%; height: clamp(48px, 29vh, 238px); object-fit: contain; }
+@media (max-width: 700px) and (orientation: portrait) {
+  .model-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .model-step:nth-child(3)::before { content: none; }
+  .model-step img { height: 14vh; }
+}
+@media (max-height: 480px) and (orientation: landscape) {
+  .model-step img { height: 19vh; }
+}
+
+.sequence-heading {
+  margin: 0;
+  color: #0846b3;
+  font-size: clamp(15px, min(2.35vw, 4.7vh), 40px);
+  word-break: keep-all;
+}
+.sequence {
+  --arrow-space: clamp(12px, 2.55vw, 44px);
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: var(--arrow-space);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.diagram-card {
+  position: relative;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-width: 0;
+  gap: .9vh;
+  padding: .85vh .55vw;
+  border-radius: clamp(7px, .8vw, 12px);
+  background: #edf5ff;
+  color: #102b61;
+  font-size: clamp(13px, min(2.6vw, 5vh), 42px);
+  font-weight: 750;
+  line-height: 1.2;
+  text-align: center;
+  word-break: keep-all;
+}
+.sequence .diagram-card + .diagram-card::before {
+  content: "→" / "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: var(--arrow-space);
+  transform: translateY(-50%);
+  color: #1647b0;
+}
+.diagram-card :is(img, .body-pictogram) { display: block; width: min(100%, 24vw, 28vh); height: clamp(26px, 18vh, 170px); object-fit: contain; }
+.diagram-card small { font-size: .8em; font-weight: 650; }
+.diagram-card strong { font-weight: 850; }
+.diagram-card .session { font-size: .75em; }
+.diagram-card.application { background: #ffedbf; color: #714900; }
+.diagram-card.combination { background: #cde3ff; color: #1647b0; }
+.diagram-card.system { background: #1647b0; color: white; }
+.key {
+  margin: 0;
+  padding: 1.1vh 1.5vw;
+  border-left: 6px solid #e9b92f;
+  border-radius: 12px;
+  background: #fff2c2;
+  font-size: clamp(13px, min(1.8vw, 4.2vh), 30px);
+  font-weight: 750;
+  line-height: 1.3;
+  word-break: keep-all;
+}
+.concept-map { display: grid; grid-template-rows: 1fr auto auto; gap: 1.3vh; flex: 1; }
+.concept-map .sequence { --arrow-space: clamp(8px, 1.5vw, 24px); }
+.concept-map .diagram-card { min-height: 15vh; padding: 1.25vh .75vw; }
+.concept-map .sequence .diagram-card::before { content: none; }
+.concept-join { display: grid; grid-template-columns: repeat(3, 1fr); color: #1647b0; text-align: center; font-size: clamp(22px, 3.7vh, 40px); }
+.concept-map .outcomes { display: flex; justify-content: center; align-items: center; gap: 1.6vw; font-size: clamp(15px, min(2.1vw, 4.6vh), 34px); text-align: center; }
+.outcomes strong { padding: .5em .75em; border-radius: 12px; background: #ffedbf; color: #102b61; }
+.outcomes strong:last-child { background: #1647b0; color: white; }
+
+.progression .key {
+  padding: .24em .55em;
+  border: 0;
+  border-radius: .4em;
+  background: linear-gradient(145deg, #293e76, #142350);
+  color: white;
+}
+.progression .key strong { color: #ffe36b; }
+.progress-line {
+  position: relative;
+  min-height: 8vh;
+  padding: .3em 0 0;
+  color: #124d97;
+  text-align: center;
+  font-size: clamp(11px, min(1.3vw, 2.7vh), 21px);
+  font-weight: 850;
+}
+.progress-line svg { position: absolute; inset: 24% 0 0; width: 100%; height: 76%; }
+.progress-line ol { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); list-style: none; margin: 0; padding: 0; }
+.progress-cards {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(6px, 1.1vw, 19px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.progress-stage {
+  --stage: #096346;
+  --stage-rule: #66a88f;
+  --stage-soft: #eaf7ef;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--stage-rule);
+  border-radius: clamp(9px, 1vw, 16px);
+  background: var(--stage-soft);
+  color: #142c4f;
+  font-size: clamp(13px, min(1.48vw, 3.9vh), 24px);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.progress-stage:nth-child(2) { --stage: #0757af; --stage-rule: #82b6ec; --stage-soft: #edf6ff; }
+.progress-stage:nth-child(3) { --stage: #55329e; --stage-rule: #aa95da; --stage-soft: #f2ecff; }
+.progress-stage:nth-child(4) { --stage: #783078; --stage-rule: #c895cf; --stage-soft: #faeef9; }
+.progress-stage h3 {
+  display: flex;
+  gap: .35em;
+  align-items: center;
+  margin: 0;
+  padding: .4em .5em;
+  background: var(--stage);
+  color: white;
+  font-size: 1.12em;
+  line-height: 1.14;
+}
+.progress-stage h3 span {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.35em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: white;
+  color: var(--stage);
+}
+.progress-examples {
+  display: grid;
+  align-content: center;
+  gap: .35em;
+  margin: .4em;
+  padding: .12em;
+  text-align: center;
+}
+.progress-examples.pairs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.progress-examples figure { min-width: 0; margin: 0; font-size: .94em; font-weight: 750; }
+.progress-examples :is(img, .body-pictogram) { display: block; width: 100%; height: clamp(30px, 10vh, 94px); object-fit: contain; }
+.progress-examples figure:only-child img { height: clamp(64px, 24vh, 225px); }
+.progress-checks {
+  display: grid;
+  gap: .22em;
+  margin: 0 .55em .5em;
+  padding: 0;
+  list-style: none;
+  font-size: .91em;
+  line-height: 1.23;
+}
+.progress-checks li { display: grid; grid-template-columns: auto 1fr; gap: .35em; }
+.progress-checks li::before { content: "✓" / ""; color: var(--stage); font-weight: 900; }
+.progress-outcome { margin: 0; padding: 0 .6em .55em; color: var(--stage); font-weight: 850; }
+.progress-groups { display: grid; grid-template-columns: 3fr 1fr; gap: 1vw; color: #2b4977; text-align: center; font-size: clamp(11px, 1.35vw, 20px); font-weight: 750; }
+.progress-groups p { margin: 0; }
+.progression .key { text-align: center; }
+@media (max-width: 700px) and (orientation: portrait) {
+  .progress-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .progress-groups { grid-template-columns: 1fr 1fr; }
+}
+
+.roadmap-grid { display: grid; grid-template-columns: minmax(0, 3.7fr) minmax(0, 1.25fr); gap: clamp(22px, 4vw, 60px); flex: 1; }
+.roadmap-lanes { display: grid; gap: 1.4vh; }
+.roadmap-lanes section { position: relative; display: grid; grid-template-rows: auto 1fr; gap: .7vh; }
+.roadmap-lanes section::after {
+  content: "↘" / "";
+  position: absolute;
+  top: 64%;
+  left: 100%;
+  width: clamp(22px, 4vw, 60px);
+  color: #1647b0;
+  font-size: clamp(19px, 3vw, 45px);
+  text-align: center;
+}
+.roadmap-lanes section + section::after { content: "↗" / ""; top: 20%; }
+.roadmap-grid .sequence { --arrow-space: clamp(10px, 1.7vw, 28px); }
+.roadmap-grid .diagram-card { font-size: clamp(12px, min(2.05vw, 4.15vh), 34px); }
+.roadmap-grid .diagram-card :is(img, .body-pictogram) { height: clamp(26px, 12.4vh, 115px); }
+.roadmap-grid .result { grid-template-rows: auto 1fr; }
+.roadmap-grid .result .sequence { grid-auto-flow: row; grid-auto-rows: 1fr; }
+.result .sequence .diagram-card + .diagram-card::before {
+  content: "↓" / "";
+  right: auto;
+  top: calc(var(--arrow-space) / -2);
+  transform: translateY(-50%);
+}
+.roadmap-grid .result img { width: min(100%, 18vw, 22vh); }
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .lesson:is(.direction,.diagram-slide) { gap: 1vh; }
+  .roadmap-grid .diagram-card :is(img, .body-pictogram) { height: 27px; }
+  .roadmap-grid .sequence-heading { font-size: 16px; }
+  .roadmap-lanes { gap: .6vh; }
+  .roadmap-grid .result { padding-block: .7vh; }
+}
+@media (max-width: 700px) and (orientation: portrait) {
+  .roadmap-grid { grid-template-columns: 1fr; gap: 27px; }
+  .roadmap-lanes section::after { content: none; }
+  .roadmap-lanes section + section::after { content: "↓" / ""; top: calc(100% + 3px); left: calc(50% - 11px); }
+  .roadmap-grid .result .sequence { grid-auto-flow: column; }
+  .result .sequence .diagram-card + .diagram-card::before { content: "→" / ""; right: 100%; top: 50%; }
+}
+.extension { --card-text: clamp(14px, min(2.55vw, 4.8vh), 42px); }
+.extension-body { display: flex; flex-direction: column; gap: 1.25vh; flex: 1; }
+.extension-body > :is(.training-group,.sequence,.training-finale) { flex: 1; }
+.extension-body > .training-group:has(> :is(.diagram-caption,.teaching)) { flex: none; }
+.training-group { display: grid; grid-template-rows: auto 1fr; gap: 1vh; }
+.training-group h3 small { margin-left: .45em; font-size: .7em; }
+.extension .sequence { --arrow-space: clamp(10px, 1.65vw, 26px); }
+.extension .diagram-card { font-size: var(--card-text); min-height: 11vh; }
+.extension .diagram-card small { word-break: keep-all; }
+.extension .with-screens .diagram-card > :is(img, .body-pictogram) { width: 86%; height: clamp(44px, 23vh, 215px); }
+.pdf-art { mix-blend-mode: multiply; }
+.document-steps .diagram-card {
+  --doc-accent: #146a58;
+  background: #eaf6f2;
+  align-content: center;
+  grid-auto-rows: max-content;
+}
+.document-steps .diagram-card:nth-child(even) { --doc-accent: #1559a3; background: #eaf3ff; }
+.document-steps .diagram-card.application { --doc-accent: #875100; background: #fff1cb; }
+.document-steps .diagram-card.combination { --doc-accent: #543493; background: #f0eaff; }
+.document-steps .diagram-card.system { --doc-accent: #69266a; background: #f6ebf8; color: #28335b; }
+.document-steps .diagram-card > strong {
+  grid-row: 1;
+  width: 100%;
+  color: var(--doc-accent);
+  padding: .28em .1em;
+  border-bottom: 2px solid currentColor;
+}
+.document-steps .diagram-card > :is(img, .body-pictogram) { align-self: center; max-height: var(--document-visual-cap, none); }
+.document-steps.parallel-tracks { --document-visual-cap: 13vh; }
+.document-steps .diagram-card > small:not(.session) { padding-inline: .35em; }
+.document-steps .diagram-card > small.session { color: var(--doc-accent); }
+.document-steps .teaching .diagram-card > strong { border-bottom: 0; }
+.document-steps .design-grid .diagram-card > strong { min-height: 1.7em; }
+@media (max-height: 480px) and (orientation: landscape) {
+  .document-steps .diagram-card > strong { padding-block: .1em; }
+  .document-steps.parallel-tracks { --document-visual-cap: 9vh; }
+}
+.device-line {
+  border-radius: 12px;
+  background: #edf5ff;
+}
+.device-line .diagram-card { background: transparent; }
+.extension .equal-cards { --arrow-space: clamp(5px, 1vw, 16px); }
+.equal-cards .diagram-card + .diagram-card::before { content: none; }
+.extension .teaching .diagram-card { min-height: 0; padding-block: .55em; }
+.extension .design-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: row; }
+.diagram-caption { margin: 0; color: #294b78; font-size: clamp(14px, min(1.85vw, 4vh), 31px); word-break: keep-all; }
+.system-model { display: grid; grid-template-rows: auto minmax(min-content, 1fr); flex: 1; gap: 1vh; }
+.system-intro { display: flex; align-items: center; gap: 1vw; margin: 0; }
+.system-intro img { width: min(15vw, 17vh); height: clamp(34px, 10vh, 96px); object-fit: contain; }
+.system-model .model-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.system-model .model-step { grid-template-rows: auto minmax(min-content, 1fr) auto; }
+.system-model .model-step img { height: clamp(32px, 18vh, 160px); }
+.system-model .model-step p { margin: .2em .45em .5em; font-size: .79em; }
+.system-model .device-images { display: flex; align-items: center; justify-content: center; gap: 3%; align-self: center; }
+.system-model .device-images img { width: 44%; }
+.review-flow { display: grid; flex: 1; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 2vw, 32px); }
+.review-phase { min-width: 0; display: grid; grid-template-rows: auto 1fr; gap: .7vh; }
+.review-phase .sequence-heading { border-radius: .5em; padding: .22em .45em; color: white; background: #155aa5; }
+.review-phase:nth-child(2) .sequence-heading { background: #6039a0; }
+.review-phase:nth-child(3) .sequence-heading { background: #8c5300; }
+.review-flow .sequence { --arrow-space: 6px; }
+.review-flow .diagram-card + .diagram-card::before { content: none; }
+.review-flow .diagram-card { font-size: clamp(13px, min(2.15vw, 4.5vh), 36px); }
+.review-flow .diagram-card img { width: 90%; }
+@media (max-width: 700px) and (orientation: portrait) {
+  .system-model .model-steps, .review-flow { grid-template-columns: 1fr; }
+  .system-model .model-step img { height: 10vh; }
+  .system-model .model-step + .model-step::before { content: none; }
+  .review-flow .sequence { min-height: 12vh; }
+}
+@media (max-height: 480px) and (orientation: landscape) {
+  .system-model .model-step img { height: 13vh; }
+}
+.sequence.milestones { align-content: center; }
+.milestones .diagram-card { padding-block: clamp(10px, 3.8vh, 40px); }
+.milestones .session { padding: .2em .55em; border-radius: .45em; background: #ffffffb8; color: #1647b0; font-size: 1em; font-weight: 850; }
+.milestones .application .session { color: #714900; }
+
+.demo-links { display: flex; flex-wrap: wrap; gap: .45em; font-size: clamp(13px, min(1.35vw, 3.4vh), 22px); }
+.demo-links a { padding: .36em .75em; border-radius: 999px; border: 1px solid #a9cafa; background: white; color: #1647b0; font-weight: 750; text-decoration: none; }
+.demo-links a:hover { background: #eaf3ff; text-decoration: underline; }
+.demo-links a:focus-visible { outline: 2px solid #1647b0; outline-offset: 2px; }
+.training-finale { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 1.5vw; text-align: center; }
+.training-finale img { width: 100%; height: min(47vh, 30vw); object-fit: contain; }
+.training-finale p { margin: 0; font: 400 clamp(18px, min(4.3vw, 7.6vh), 70px)/1.3 Jua, sans-serif; color: #1647b0; }
+.training-finale mark { padding: .04em .2em; border-radius: .2em; background: #ffedbf; color: inherit; }
+@media (max-height: 480px) and (orientation: landscape) {
+  .extension .diagram-card :is(img, .body-pictogram) { max-height: var(--document-visual-cap, 13vh); }
+  .extension .with-screens .diagram-card > :is(img, .body-pictogram) { max-height: var(--document-visual-cap, 20vh); }
+  .progress-line { min-height: 6vh; }
+  .progress-stage { font-size: 11px; }
+  .progress-examples :is(img, .body-pictogram) { height: 7vh; }
+  .progress-examples figure:only-child img { height: 14vh; }
+}
+@media (max-width: 900px) and (orientation: portrait) {
+  .extension .six { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: row; }
+  .six .diagram-card + .diagram-card::before { content: none; }
+}
+@media (max-width: 700px) and (orientation: portrait) {
+  .extension .diagram-card :is(img, .body-pictogram) { height: min(9vh, 59px); }
+  .extension .with-screens .diagram-card > :is(img, .body-pictogram) { height: min(12vh, 80px); }
+  .extension .diagram-card { min-height: 0; padding: .55em .25em; }
+  .extension .diagram-card strong, .extension .diagram-card small { overflow-wrap: anywhere; }
+  .training-finale { grid-template-columns: 1fr 1fr; }
+  .training-finale p { grid-area: 1 / 1 / 2 / 3; }
+  .training-finale img { height: min(24vh, 36vw); }
+}
+
+@media(max-width:700px){.lesson{--training-body-inset:4vw;overflow:auto;height:100vh;padding:var(--training-title-top) var(--training-body-inset) 12vh}}@media print{body{overflow:visible}.slide[hidden]{display:flex}.slide{break-after:page}}
+.lesson.concerns {
+  --training-body-inset: 4.3vw;
+  position: relative;
+  height: 100vh;
+  overflow: auto;
+  padding: var(--training-title-top) var(--training-body-inset) max(5vh, 47px);
+  gap: 2.2vh;
+}
+.concern-grid {
+  display: grid;
+  position: relative;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .7fr) minmax(0, 1fr);
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  flex: 1;
+  min-height: 0;
+  gap: .65vh 0;
+}
+.thinking-art {
+  position: absolute;
+  inset: auto 25% -3% 25%;
+  width: 50%;
+  height: 85%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+.bubble {
+  --bubble-fill: url(#concern-blue);
+  --bubble-line: #388ded;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4.5%;
+  margin: 0;
+  padding: .45em 12% .7em;
+  color: #0d2753;
+  font-size: clamp(13px, min(2.24vw, 4.35vh), 37px);
+  font-weight: 770;
+  line-height: 1.14;
+  letter-spacing: -.025em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.bubble-shape, .concern-defs { position: absolute; }
+.bubble-shape {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 3px 4px #2c548929);
+}
+.bubble-outline {
+  fill: var(--bubble-fill);
+  stroke: var(--bubble-line);
+  stroke-width: 2.25;
+  vector-effect: non-scaling-stroke;
+}
+.bubble-icon { position: relative; width: 30%; flex: none; }
+.bubble span { position: relative; }
+.bubble strong { color: #0846c4; font-weight: 900; }
+.bubble.left { grid-column: 1; }
+.bubble.right { grid-column: 3; }
+.bubble.r1 { grid-row: 1; }
+.bubble.r2 { grid-row: 2; }
+.bubble.r3 { grid-row: 3; }
+.bubble.left.r1 { margin-left: 24%; margin-right: -14%; }
+.bubble.right.r1 { margin-left: -14%; margin-right: 24%; }
+.bubble.left.r3 { margin-left: 17%; margin-right: -7%; }
+.bubble.right.r3 { margin-left: -7%; margin-right: 17%; }
+.bubble.right:not(.r2) { --bubble-fill: url(#concern-violet); --bubble-line: #7955dc; }
+
+@media (max-width: 700px) and (orientation: portrait) {
+  .concern-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto repeat(3, minmax(106px, auto));
+    flex: none;
+    gap: 6px;
+  }
+  .thinking-art { position: static; grid-area: 1 / 1 / 2 / 3; width: 100%; height: 23vh; }
+  .bubble:is(.left, .right):is(.r1, .r3) { margin-inline: 0; }
+  .bubble { font-size: clamp(12px, 3.4vw, 21px); padding-inline: 11%; gap: 3%; }
+  .bubble.right { grid-column: 2; }
+  .bubble.r1 { grid-row: 2; }
+  .bubble.r2 { grid-row: 3; }
+  .bubble.r3 { grid-row: 4; }
+}
+</style>
+<link rel="stylesheet" href="../../middle/phyCom/common/css/module-navigation.css">
+<link rel="stylesheet" href="./training-view.css">
+<link rel="stylesheet" href="./training-cards.css">
+<script defer src="../../middle/phyCom/common/js/module-navigation.js"></script>
+<script defer src="../../middle/phyCom/common/js/dashboard-lesson-fullscreen.js"></script>
+<script defer src="./training-view.js"></script>
+</head><body>
+<div id="training-reader" data-module="slides"><div class="training-viewport"><div class="training-content"><main class="slide cover" aria-label="연수 표지">
+  <div class="wave" aria-hidden="true"></div>
+  <p class="training-name">경남형 AI·디지털 기반 <span>정보교육 수업모형</span> 개발 연수</p>
+  <div class="cover-body">
+    <img class="cover-art" src="../../assets/images/teacher-character-left.png" alt="연수 교사 캐릭터">
+    <div class="cover-copy">
+      <h1>피지컬 컴퓨팅 기반의<br><strong class="title-second"><span>확장적 문제 해결</span> 수업</strong></h1>
+      <p class="subject">개별 장치의 탐구에서 <strong>창의적 문제 해결</strong>까지</p>
+      <div class="details"><span class="date"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m-13 4h2m4 0h2m-8 3h2"/></svg>2026.12.11.Fri.</span><span class="divider"></span><span>◷ &nbsp;18:30 ~ 20:30</span></div>
+    </div>
+    <img class="cover-art" src="../../assets/images/scarecrow-project.png" alt="빙글빙글 허수아비 프로젝트">
+  </div>
+  <p class="speaker">○○중학교 &nbsp;|&nbsp; ○○○</p>
+</main><section class="slide lesson agenda-slide" hidden aria-label="연수 전체 흐름"><div class="training-heading"><h2 class="training-title" data-title-icon="calendar"><span>연수 <strong>전체 흐름</strong></span></h2></div>
+  <div class="agenda">
+    <article>
+      <h3>1부 · <strong>수업모형 이해</strong></h3>
+      <ol>
+        <li><img src="../../assets/images/overview-step-2.png" alt="">개발 배경</li>
+        <li><img src="../../assets/images/overview-step-4.png" alt="">수업모형 구조</li>
+        <li><img src="../../assets/images/overview-laptop.png" alt="">실제 웹교재 사례</li>
+        <li><img src="../../assets/images/overview-step-5.png" alt="">2부 실습 안내</li>
+      </ol>
+    </article>
+    <div class="agenda-arrow" aria-hidden="true"></div>
+    <article>
+      <h3>2부 · <strong>수업 설계 실습</strong></h3>
+      <ol>
+        <li><svg viewBox="0 0 120 100" aria-hidden="true" fill="none" stroke="#142746" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path fill="#3287db" d="M12 24c17-5 33-4 48 6 15-10 31-11 48-6v55c-20-4-33-1-48 10-13-10-30-13-48-10z"/><path fill="#fff" d="M20 17c15-5 29-3 40 7 11-10 25-12 40-7v53c-15-2-29 2-40 12-11-10-25-14-40-12zM60 24v58"/><path stroke="#68a7ec" d="M29 29c8-1 16 0 22 4m-22 9c8-1 16 0 22 4m-22 9c8-1 16 0 22 4m18-26c6-4 14-5 22-4m-22 17c6-4 14-5 22-4m-22 17c6-4 14-5 22-4"/><path fill="#49c77b" stroke="#177744" d="M79 14h13v24l-6-5-7 5z"/></svg>교과서 분석</li>
+        <li><img src="../../assets/images/overview-step-3.png" alt="">중간 과제 설계</li>
+        <li><img src="../../assets/images/overview-step-1.png" alt="">모둠별 결과 공유</li>
+        <li><svg viewBox="0 0 120 100" aria-hidden="true" fill="none" stroke="#142746" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path fill="#67b7f5" d="M24 15a4 4 0 0 1 8 2L17 86a4 4 0 0 1-8-2z"/><path fill="#fff" d="M32 20c21-10 38 21 70 8L92 66c-27 10-51-19-68-6z"/><path fill="#20335b" stroke="none" d="M32 20q8-4 18 0l-5 13-15-3zm13 13 18 8-4 11-17-7zm18 8q8 5 18 6l-4 13-18-8zm18 6 17-4-4 12-17 5zm-39-2-4 14-14 1 3-14z"/><path stroke="#eda516" d="m99 18 5-9m0 15 9-4m-7 11h8"/></svg>마무리</li>
+      </ol>
+    </article>
+  </div>
+</section><section class="slide lesson concerns" hidden aria-label="피지컬 컴퓨팅, 어떻게 가르칠까?">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="question"><span>피지컬 컴퓨팅, <strong>어떻게 가르칠까?</strong></span></h2></div>
+  <svg class="concern-defs" width="0" height="0" aria-hidden="true">
+    <defs>
+      <linearGradient id="concern-blue" x2=".75" y2="1"><stop stop-color="#f8fcff"/><stop offset="1" stop-color="#dceeff"/></linearGradient>
+      <linearGradient id="concern-violet" x2=".75" y2="1"><stop stop-color="#f9f5ff"/><stop offset="1" stop-color="#e8ddff"/></linearGradient>
+      <clipPath id="concern-board"><polygon points="252,348 258,320 281,314 284,303 365,278 379,284 407,344 414,369 401,378 297,403 282,397 275,381 256,372"/></clipPath>
+      <clipPath id="concern-books"><polygon points="118,514 137,495 193,471 221,484 253,514 263,536 261,549 269,565 264,581 192,614 172,611 122,586 115,565"/></clipPath>
+      <clipPath id="concern-students"><polygon points="197,777 203,748 219,725 237,716 264,716 278,730 310,729 325,715 347,707 373,710 387,725 396,748 398,796 384,815 359,828 231,832 202,816"/></clipPath>
+      <clipPath id="concern-calendar"><polygon points="1019,369 1031,315 1044,306 1056,306 1058,290 1070,291 1072,304 1086,304 1091,291 1104,291 1105,304 1118,304 1122,292 1134,295 1135,306 1146,307 1157,322 1151,365 1154,382 1143,397 1128,402 1021,399 1016,386"/></clipPath>
+      <clipPath id="concern-laptop"><polygon points="1138,513 1254,497 1264,506 1273,549 1276,556 1291,558 1297,581 1287,608 1268,623 1188,623 1141,596 1137,585"/></clipPath>
+      <clipPath id="concern-clipboard"><polygon points="1110,735 1125,720 1147,715 1151,701 1168,695 1180,708 1206,706 1220,719 1228,746 1246,744 1254,759 1234,782 1240,813 1227,828 1144,843 1126,828"/></clipPath>
+      <path id="concern-accent" d="M-9 1l-4-4M-2-1l-1-7M5 0l4-5" fill="none" stroke="#ffc329" stroke-width="3.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+    </defs>
+  </svg>
+  <div class="concern-grid">
+    <img class="thinking-art" src="../../assets/images/teacher-thinking.png" alt="노트북 앞에서 수업을 고민하는 교사">
+    <p class="bubble left r1">
+      <svg class="bubble-shape" viewBox="0 0 270 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="bubble-outline" d="M7 52C7 21 61 5 134 5c76 0 130 16 130 49 0 17-13 28-45 34l9 11-31-10C106 96 7 86 7 52Z"/>
+        <use href="#concern-accent" x="14" y="10"/>
+      </svg>
+      <svg class="bubble-icon" viewBox="249 278 163 127" aria-hidden="true"><image href="../../assets/images/teacher-thinking-draft.png" width="1672" height="941" clip-path="url(#concern-board)"/></svg>
+      <span><strong>오렌지보드</strong>는 한 번도 사용해 본 적이 없는데…</span>
+    </p>
+    <p class="bubble left r2">
+      <svg class="bubble-shape" viewBox="0 0 270 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="bubble-outline" d="M6 49C6 19 59 5 131 5s112 13 121 40l16 8-17 8c-11 24-57 33-124 33C54 94 6 82 6 49Z"/>
+        <use href="#concern-accent" x="12" y="10"/>
+      </svg>
+      <svg class="bubble-icon" viewBox="116 471 154 144" aria-hidden="true"><image href="../../assets/images/teacher-thinking-draft.png" width="1672" height="941" clip-path="url(#concern-books)"/></svg>
+      <span><strong>교과서 예제</strong>만 따라 하면 충분할까?</span>
+    </p>
+    <p class="bubble left r3">
+      <svg class="bubble-shape" viewBox="0 0 270 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="bubble-outline" d="M8 54C8 24 60 7 140 7c32 0 56 2 77 7l32-10-12 19c15 8 25 18 25 33 0 27-49 40-126 40C59 96 8 84 8 54Z"/>
+        <use href="#concern-accent" x="19" y="15"/>
+      </svg>
+      <svg class="bubble-icon" viewBox="197 708 202 125" aria-hidden="true"><image href="../../assets/images/teacher-thinking-draft.png" width="1672" height="941" clip-path="url(#concern-students)"/></svg>
+      <span>학생들이 <strong>스스로 문제를 해결</strong>하게 하려면?</span>
+    </p>
+    <p class="bubble right r1">
+      <svg class="bubble-shape" viewBox="0 0 270 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="bubble-outline" d="M6 52C6 22 58 5 131 5s131 15 131 45c0 30-48 43-124 43-26 0-51-1-72-6L20 97l13-17C15 73 6 64 6 52Z"/>
+        <use href="#concern-accent" x="246" y="10"/>
+      </svg>
+      <svg class="bubble-icon" viewBox="1016 288 143 118" aria-hidden="true"><image href="../../assets/images/teacher-thinking-draft.png" width="1672" height="941" clip-path="url(#concern-calendar)"/></svg>
+      <span><strong>한 학기 수업</strong>을 어떻게 구성하지?</span>
+    </p>
+    <p class="bubble right r2">
+      <svg class="bubble-shape" viewBox="0 0 270 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="bubble-outline" d="M20 44C30 17 76 6 146 6c73 0 118 14 118 44 0 31-46 44-121 44-66 0-112-12-123-36L2 51Z"/>
+        <use href="#concern-accent" x="250" y="15"/>
+      </svg>
+      <svg class="bubble-icon" viewBox="1136 496 161 129" aria-hidden="true"><image href="../../assets/images/teacher-thinking-draft.png" width="1672" height="941" clip-path="url(#concern-laptop)"/></svg>
+      <span>개별 장치 실습을 <strong>프로젝트</strong>로 어떻게 연결하지?</span>
+    </p>
+    <p class="bubble right r3">
+      <svg class="bubble-shape" viewBox="0 0 270 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="bubble-outline" d="M22 24 7 8l35 5C62 7 91 5 136 5c76 0 128 15 128 45 0 30-47 45-128 45C61 95 9 81 9 51c0-11 4-19 13-27Z"/>
+        <use href="#concern-accent" x="247" y="17"/>
+      </svg>
+      <svg class="bubble-icon" viewBox="1110 696 143 147" aria-hidden="true"><image href="../../assets/images/teacher-thinking-draft.png" width="1672" height="941" clip-path="url(#concern-clipboard)"/></svg>
+      <span>무엇을 어떻게 <strong>평가</strong>하지?</span>
+    </p>
+  </div>
+</section>
+<section class="slide lesson direction" hidden aria-label="수업모형 개발 방향">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="compass"><span>교과서 기본 실습에서 <strong>복합 프로젝트까지</strong></span></h2></div>
+  <div class="model-comparison">
+    <dl class="textbook-path">
+      <dt>교과서 구성</dt>
+      <dd><span>개별 장치 기본 실습</span><span aria-hidden="true">⟶</span><span>복합 프로젝트</span></dd>
+    </dl>
+    <article class="model-path">
+      <h3 class="sequence-heading">수업모형 적용</h3>
+      <ol class="model-steps">
+        <li class="model-step"><strong>개별 장치 기본 실습</strong><img class="pdf-art" src="../../assets/images/training-pdf-dial.png" alt=""></li>
+        <li class="model-step"><strong>응용 과제</strong><img class="pdf-art" src="../../assets/images/training-pdf-moon-orbit.png" alt=""></li>
+        <li class="model-step"><strong>연결·조합 과제</strong><img class="pdf-art" src="../../assets/images/training-pdf-link.png" alt=""></li>
+        <li class="model-step"><strong>복합 프로젝트</strong><img src="../../assets/images/scarecrow-project.png" alt=""></li>
+      </ol>
+    </article>
+  </div>
+  <p class="key">앞서 배운 지식과 기능을 활용하여 스스로 해결할 수 있는 문제의 범위를 넓혀 간다.</p>
+</section><section class="slide lesson diagram-slide document-steps" hidden aria-label="배운 지식과 기능을 어떻게 확장할 것인가?">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="puzzle"><span>배운 <strong>지식과 기능을</strong> 어떻게 확장할 것인가?</span></h2></div>
+  <div class="concept-map">
+    <ol class="sequence">
+        <li class="diagram-card"><img src="../../assets/images/training-pdf-link.png" class="pdf-art" alt=""><strong>연결</strong><small>기존 지식과 새로운 지식</small></li>
+        <li class="diagram-card combination"><img src="../../assets/images/overview-gear.png" alt=""><strong>조합</strong><small>여러 장치의 기능과 코드</small></li>
+        <li class="diagram-card application"><img src="../../assets/images/overview-step-3.png" alt=""><strong>변형</strong><small>새로운 목적에 맞게 코드 수정</small></li>
+      </ol>
+    <div class="concept-join" aria-hidden="true"><span>↘</span><span>↓</span><span>↙</span></div>
+    <div class="outcomes"><strong>문제 해결 범위의 확장</strong><span aria-hidden="true">→</span><strong>컴퓨팅 사고력 향상</strong></div>
+  </div>
+</section>
+<section class="slide lesson diagram-slide progression" hidden aria-label="문제 해결의 단계적 확장">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="growth"><span>문제 해결의 <strong>단계적 확장</strong></span></h2></div>
+  <div class="progress-line">
+    <svg viewBox="0 0 800 52" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="progress-gradient"><stop stop-color="#79d9e4"/><stop offset=".52" stop-color="#3d92fb"/><stop offset="1" stop-color="#a762e8"/></linearGradient></defs>
+      <path d="M8 46C230 43 560 38 784 12" fill="none" stroke="url(#progress-gradient)" stroke-width="6"/>
+      <path d="m777 3 20 7-18 11z" fill="#a762e8"/>
+      <circle cx="100" cy="44" r="4" fill="white" stroke="#79d9e4" stroke-width="2"/>
+      <circle cx="300" cy="40" r="4" fill="white" stroke="#559ff0" stroke-width="2"/>
+      <circle cx="500" cy="34" r="4" fill="white" stroke="#647ded" stroke-width="2"/>
+      <circle cx="700" cy="21" r="4" fill="white" stroke="#a762e8" stroke-width="2"/>
+    </svg>
+    <ol aria-label="지식 활용의 확장 흐름"><li>개별 지식 습득</li><li>지식 연결</li><li>지식 조합</li><li>지식 변형·확장</li></ol>
+  </div>
+  <ol class="progress-cards">
+    <li class="progress-stage">
+      <h3><span aria-hidden="true">1</span>개별 장치 탐구·응용</h3>
+      <div class="progress-examples pairs">
+        <figure><img class="pdf-art" src="../../assets/images/training-pdf-dial.png" alt=""><figcaption>가변저항</figcaption></figure>
+        <figure><img class="pdf-art" src="../../assets/images/training-pdf-ultrasonic.png" alt=""><figcaption>초음파 센서</figcaption></figure>
+        <figure><img class="pdf-art" src="../../assets/images/training-pdf-servo.png" alt=""><figcaption>서보모터</figcaption></figure>
+        <figure><img class="pdf-art" src="../../assets/images/training-pdf-buzzer.png" alt=""><figcaption>수동버저</figcaption></figure>
+      </div>
+      <ul class="progress-checks"><li>장치의 작동 원리 이해</li><li>입력값과 출력 동작 관찰</li><li>기본 코드 실습</li></ul>
+      <p class="progress-outcome">지식과 기능 습득·활용</p>
+    </li>
+    <li class="progress-stage">
+      <h3><span aria-hidden="true">2</span>장치 연결·조합</h3>
+      <div class="progress-examples pairs">
+        <figure><img src="../../assets/images/dial-sign-circuit.png" alt=""><figcaption>다이얼 방향 표지판</figcaption></figure>
+        <figure><img src="../../assets/images/topics-alarm.png" alt=""><figcaption>거리 감지 경보기</figcaption></figure>
+      </div>
+      <ul class="progress-checks"><li>가변저항값으로 회전 각도 제어</li><li>측정 거리로 경고음 제어</li></ul>
+      <p class="progress-outcome">기존 지식 활용</p>
+    </li>
+    <li class="progress-stage">
+      <h3><span aria-hidden="true">3</span>복합 시스템 구현·개선</h3>
+      <div class="progress-examples">
+        <figure><img src="../../assets/images/scarecrow-project.png" alt=""><figcaption>빙글빙글 허수아비</figcaption></figure>
+      </div>
+      <ul class="progress-checks"><li>여러 입력·출력 장치 연결</li><li>기존 코드를 조합하고 변형</li><li>실행 결과를 검증하고 개선</li></ul>
+      <p class="progress-outcome">문제 해결 범위 확장</p>
+    </li>
+    <li class="progress-stage">
+      <h3><span aria-hidden="true">4</span>새로운 생활 문제 해결</h3>
+      <div class="progress-examples">
+        <figure><img src="../../assets/images/team-problem-solving.png" alt=""><figcaption>학생 주도 모둠 프로젝트</figcaption></figure>
+      </div>
+      <ul class="progress-checks"><li>생활 속 문제 발견</li><li>필요한 장치와 알고리즘 선택</li><li>해결 방법 구현·공유</li></ul>
+      <p class="progress-outcome">지식의 전이</p>
+    </li>
+  </ol>
+  <div class="progress-groups"><p>11차시 대표 수업 사례</p><p>학생 주도 후속 프로젝트</p></div>
+  <p class="key">배운 지식과 코드를 <strong>재사용하고 변형</strong>하며 문제 해결의 범위를 넓힌다.</p>
+</section>
+<section class="slide lesson diagram-slide" hidden aria-label="11차시로 살펴보는 수업모형 적용">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="roadmap"><span>11차시로 살펴보는 <strong>수업모형 적용</strong></span></h2></div>
+  <div class="roadmap-grid">
+    <div class="roadmap-lanes">
+      <section>
+        <h3 class="sequence-heading">첫 번째 학습 흐름</h3>
+        <ol class="sequence">
+        <li class="diagram-card"><small class="session">1차시</small><img class="pdf-art" src="../../assets/images/training-pdf-dial.png" alt=""><strong>가변저항 탐구</strong></li>
+        <li class="diagram-card application"><small class="session">2차시</small><img src="../../assets/images/moon-4.png" alt=""><strong>달의 모양과 위치 표현</strong></li>
+        <li class="diagram-card"><small class="session">3차시</small><img class="pdf-art" src="../../assets/images/training-pdf-servo.png" alt=""><strong>서보모터 탐구</strong></li>
+        <li class="diagram-card combination"><small class="session">4차시</small><img src="../../assets/images/overview-step-4.png" alt=""><strong>다이얼 방향 표지판</strong></li>
+      </ol>
+      </section>
+      <section>
+        <h3 class="sequence-heading">두 번째 학습 흐름</h3>
+        <ol class="sequence">
+        <li class="diagram-card"><small class="session">5차시</small><img class="pdf-art" src="../../assets/images/training-pdf-ultrasonic.png" alt=""><strong>초음파 센서 탐구</strong></li>
+        <li class="diagram-card"><small class="session">6차시</small><img class="pdf-art" src="../../assets/images/training-pdf-buzzer.png" alt=""><strong>수동버저와 음악 표현</strong></li>
+        <li class="diagram-card combination"><small class="session">7차시</small><img src="../../assets/images/topics-alarm.png" alt=""><strong>거리 감지 경보기</strong></li>
+      </ol>
+      </section>
+    </div>
+    <section class="result">
+      <h3 class="sequence-heading">복합 시스템 구현·개선</h3>
+      <ol class="sequence">
+        <li class="diagram-card system"><small class="session">8~9차시</small><img src="../../assets/images/scarecrow-project.png" alt=""><strong>빙글빙글 허수아비 구현·검증</strong></li>
+        <li class="diagram-card system"><small class="session">10~11차시</small><img src="../../assets/images/student-entry-code.png" alt=""><strong>코드 분석·개선</strong></li>
+      </ol>
+    </section>
+  </div>
+  <p class="key">학생 주도 생활 문제 해결 프로젝트는 별도 시수로 운영</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="각 과제는 어떻게 해결해 나갈까?">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="cycle"><span>각 과제는 어떻게 <strong>해결해 나갈까?</strong></span></h2></div>
+  <div class="extension-body"><div class="training-group"><h3 class="sequence-heading">경남형 정보교육 6단계 문제 해결 과정</h3><ol class="sequence six">
+        <li class="diagram-card"><small class="session">1</small><img src="../../assets/images/theme-discover.png" alt=""><strong>문제 발견</strong></li>
+        <li class="diagram-card"><small class="session">2</small><img src="../../assets/images/overview-step-3.png" alt=""><strong>문제 구조화</strong></li>
+        <li class="diagram-card"><small class="session">3</small><img src="../../assets/images/overview-step-4.png" alt=""><strong>컴퓨팅 설계</strong></li>
+        <li class="diagram-card"><small class="session">4</small><img src="../../assets/images/overview-laptop.png" alt=""><strong>구현</strong></li>
+        <li class="diagram-card"><small class="session">5</small><svg class="body-pictogram checklist" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-checklist"/></svg><strong>테스트·개선</strong></li>
+        <li class="diagram-card system"><small class="session">6</small><img src="../../assets/images/overview-step-6.png" alt=""><strong>공유·확장</strong></li>
+      </ol></div>
+    <div class="training-group"><h3 class="sequence-heading">교수·학습 방식 <small>6단계 전반에서 활용</small></h3><ol class="sequence equal-cards teaching">
+        <li class="diagram-card"><strong>직접교수</strong></li>
+        <li class="diagram-card application"><strong>능동학습</strong></li>
+        <li class="diagram-card"><strong>명료화</strong></li>
+      </ol></div></div>
+  <p class="key">과제의 특성과 학습 목적에 따라 필요한 단계를 중심으로 유연하게 운영한다.</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="교과서 기본 실습을 도움닫기로">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="book"><span>교과서 기본 실습을 <strong>도움닫기로</strong></span></h2></div>
+  <div class="extension-body"><ol class="sequence equal-cards device-line">
+        <li class="diagram-card"><img class="pdf-art" src="../../assets/images/training-pdf-dial.png" alt=""><strong>가변저항</strong></li>
+        <li class="diagram-card"><img class="pdf-art" src="../../assets/images/training-pdf-servo.png" alt=""><strong>서보모터</strong></li>
+        <li class="diagram-card"><img class="pdf-art" src="../../assets/images/training-pdf-ultrasonic.png" alt=""><strong>초음파 센서</strong></li>
+        <li class="diagram-card"><img class="pdf-art" src="../../assets/images/training-pdf-buzzer.png" alt=""><strong>수동버저</strong></li>
+      </ol>
+    <ol class="sequence with-screens">
+        <li class="diagram-card"><svg class="body-pictogram book" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-book"/></svg><strong>개념 이해</strong></li>
+        <li class="diagram-card combination"><img src="../../assets/images/potentiometer-principle-reference2.png" alt=""><strong>작동 원리 탐구</strong></li>
+        <li class="diagram-card system"><img src="../../assets/images/student-entry-code.png" alt=""><strong>기본 코드 실습</strong></li>
+      </ol></div>
+  <aside class="demo-links" aria-label="기존 웹교재 시연"><a href="./lessons.html?session=1" target="_blank" rel="noopener">가변저항 웹교재 ↗</a><a href="./lessons.html?session=3" target="_blank" rel="noopener">서보모터 웹교재 ↗</a><a href="./lessons.html?demo=buzzer-demo" target="_blank" rel="noopener">수동버저 학생 작품 시연 ↗</a></aside>
+  <p class="key">교과서 기본 실습은 새로운 문제 해결을 위한 출발점이다.</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="배운 지식을 새로운 상황에 적용하기">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="bulb"><span>배운 지식을 <strong>새로운 상황에</strong> 적용하기</span></h2></div>
+  <div class="extension-body"><ol class="sequence with-screens">
+        <li class="diagram-card"><small class="session">교과서</small><img src="../../assets/images/volume-4.png" alt=""><strong>볼륨 크기 조절하기</strong><small>가변저항 입력을 볼륨 단계로 표현</small></li>
+        <li class="diagram-card application"><small class="session">응용</small><img class="pdf-art" src="../../assets/images/training-pdf-moon-orbit.png" alt="단계에 따라 모양과 위치가 바뀌는 달"><strong>달의 모양과 위치 표현하기</strong><small>과학 · 달의 위상과 위치를 표현</small></li>
+        <li class="diagram-card combination"><small class="session">발전</small><img src="../../assets/images/moon-student-conditions.JPG" alt=""><strong>단계와 좌표의 규칙 일반화</strong><small>수학 · 단계에 따른 X·Y 좌표의 변화를 규칙으로 표현</small></li>
+      </ol></div>
+  <aside class="demo-links" aria-label="기존 웹교재 시연"><a href="./lessons.html?session=2" target="_blank" rel="noopener">가변저항 웹교재 · 달 과제 ↗</a></aside>
+  <p class="key">달의 모양 단계가 늘어나더라도 코드의 개수가 늘어나지 않도록 할 수 있을까?</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="음악 지식을 코드로 표현하기">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="music"><span>음악 지식을 <strong>코드로 표현하기</strong></span></h2></div>
+  <div class="extension-body"><ol class="sequence with-screens">
+        <li class="diagram-card"><img class="pdf-art" src="../../assets/images/training-pdf-melody.png" alt=""><strong>음높이·음표 길이</strong><small>음을 코드의 입력값으로 표현</small></li>
+        <li class="diagram-card application"><img src="../../assets/images/buzzer-note-blocks.png" alt="수동버저로 음높이와 길이를 지정하는 엔트리 연주 블록"><strong>악곡 연주</strong><small>음을 연주 순서에 맞게 배열</small></li>
+        <li class="diagram-card combination"><img src="../../assets/images/overview-step-4.png" alt=""><strong>반복 구절의 함수화</strong><small>반복되는 구절을 함수로 호출</small></li>
+      </ol>
+    <div class="training-group"><h3 class="sequence-heading">학생 산출물 · 언제나 몇 번이라도</h3><p class="diagram-caption">기존 웹교재의 연주, 악보와 코드 강조 시연을 함께 살펴본다.</p></div></div>
+  <aside class="demo-links" aria-label="기존 웹교재 시연"><a href="./lessons.html?demo=buzzer-demo" target="_blank" rel="noopener">수동버저 학생 작품 시연 ↗</a></aside>
+  <p class="key">음악 지식을 표현하는 과정에서 알고리즘 구성과 코드 재사용으로 확장한다.</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="다이얼 방향 표지판">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="sign"><span><strong>다이얼 방향 표지판</strong></span></h2></div>
+  <div class="extension-body"><ol class="sequence with-screens">
+        <li class="diagram-card"><a href="../../assets/images/dial-sign-volume-source-code.jpg" target="_blank" rel="noopener"><img src="../../assets/images/dial-sign-volume-source-code.jpg" alt="수업모형 원문의 볼륨 조절 코드"></a><strong>가변저항 입력값</strong><small>기존 입력 코드에서 읽어 올 값 찾기</small></li>
+        <li class="diagram-card application"><img src="../../assets/images/dial-sign-circuit.png" alt="가변저항과 서보모터를 오렌지보드에 연결한 회로"><strong>값 변환</strong><small>입력 범위를 각도 범위로 바꾸기</small></li>
+        <li class="diagram-card combination"><a href="../../assets/images/dial-sign-servo-source-code.jpg" target="_blank" rel="noopener"><img src="../../assets/images/dial-sign-servo-source-code.jpg" alt="수업모형 원문의 서보모터 방향키 코드"></a><strong>서보모터 회전 각도</strong><small>기존 회전 코드에 각도 전달</small></li>
+      </ol>
+    <p class="diagram-caption">교사는 두 장치의 기존 코드에서 입력을 읽는 부분과 각도를 지정하는 부분을 찾아 비교하도록 돕는다.</p></div>
+  <aside class="demo-links" aria-label="기존 웹교재 시연"><a href="../../middle/phyCom/projects/dial-direction-sign/" target="_blank" rel="noopener">다이얼 방향 표지판 과제 ↗</a><a href="./lessons.html?session=1" target="_blank" rel="noopener">가변저항 웹교재 ↗</a><a href="./lessons.html?session=3" target="_blank" rel="noopener">서보모터 웹교재 ↗</a></aside>
+  <p class="key">가변저항의 입력값을 서보모터의 회전 각도로 활용하려면 어떻게 해야 할까?</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="거리 감지 경보기">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="alert"><span><strong>거리 감지 경보기</strong></span></h2></div>
+  <div class="extension-body"><ol class="sequence">
+        <li class="diagram-card"><img class="pdf-art" src="../../assets/images/training-pdf-ultrasonic.png" alt=""><strong>초음파 센서 거리 측정</strong><small>입력 코드에서 측정값 읽기</small></li>
+        <li class="diagram-card application"><img src="../../assets/images/overview-step-4.png" alt=""><strong>조건 판단</strong><small>측정값과 기준 거리 비교</small></li>
+        <li class="diagram-card combination"><img class="pdf-art" src="../../assets/images/training-pdf-buzzer.png" alt=""><strong>수동버저 제어</strong><small>판단 결과에 따른 출력 제어</small></li>
+      </ol>
+    <div class="training-group"><h3 class="sequence-heading">기준 거리의 경계 검증</h3><ol class="sequence equal-cards teaching">
+        <li class="diagram-card"><strong>가까울 때</strong></li>
+        <li class="diagram-card application"><strong>같을 때</strong></li>
+        <li class="diagram-card"><strong>멀 때</strong></li>
+      </ol></div></div>
+  <aside class="demo-links" aria-label="기존 웹교재 시연"><a href="./lessons.html?demo=buzzer-demo" target="_blank" rel="noopener">수동버저 학생 작품 시연 ↗</a><a href="../../middle/phyCom/projects/distance-alarm/" target="_blank" rel="noopener">7차시 거리 감지 경보기 ↗</a></aside>
+  <p class="key">세 거리에서 예상과 실제를 비교하고, 기준 거리와 같을 때의 동작을 설명한다.</p>
+</section>
+<section class="slide lesson diagram-slide extension" hidden aria-label="빙글빙글 허수아비">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="scarecrow"><span><strong>빙글빙글 허수아비</strong></span></h2></div>
+  <div class="system-model">
+    <figure class="system-intro"><img src="../../assets/images/scarecrow-project.png" alt="빙글빙글 허수아비 프로젝트"><figcaption class="diagram-caption">다이얼 방향 표지판과 거리 감지 경보기를 하나의 시스템으로 연결</figcaption></figure>
+    <ol class="model-steps">
+      <li class="model-step"><strong>입력</strong><div class="device-images"><img class="pdf-art" src="../../assets/images/training-pdf-dial.png" alt=""><img class="pdf-art" src="../../assets/images/training-pdf-ultrasonic.png" alt=""></div><p><b>가변저항 · 초음파 센서</b><br>기준 설정값과 거리 측정값 읽기</p></li>
+      <li class="model-step"><strong>처리</strong><img src="../../assets/images/overview-step-4.png" alt=""><p><b>감지 거리 기준 설정 및 비교</b><br>가변저항으로 기준을 조절하고 거리 측정값과 비교</p></li>
+      <li class="model-step"><strong>출력</strong><div class="device-images"><img class="pdf-art" src="../../assets/images/training-pdf-servo.png" alt=""><img class="pdf-art" src="../../assets/images/training-pdf-buzzer.png" alt=""></div><p><b>서보모터 · 수동버저</b><br>회전 동작과 경보음 출력</p></li>
+    </ol>
+  </div>
+  <aside class="demo-links" aria-label="기존 웹교재 시연"><a href="../../middle/phyCom/projects/scarecrow/" target="_blank" rel="noopener">8차시 허수아비 수업자료 ↗</a></aside>
+  <p class="key">앞서 학습한 코드와 기능을 재사용·조합·변형한다.</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="작동하는 코드에서 더 나은 코드로">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="code"><span>작동하는 코드에서 <strong>더 나은 코드로</strong></span></h2></div>
+  <div class="extension-body"><div class="review-flow">
+      <section class="review-phase"><h3 class="sequence-heading">분석</h3><ol class="sequence equal-cards">
+        <li class="diagram-card"><small class="session">1</small><svg class="body-pictogram checklist" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-checklist"/></svg><strong>예상과 실제 비교</strong></li>
+        <li class="diagram-card"><small class="session">2</small><img src="../../assets/images/overview-gear.png" alt=""><strong>오류 원인 분석·수정</strong></li>
+      </ol></section>
+      <section class="review-phase"><h3 class="sequence-heading">비교</h3><ol class="sequence equal-cards">
+        <li class="diagram-card"><small class="session">3</small><img src="../../assets/images/training-pdf-compare-code.png" class="pdf-art" alt=""><strong>같은 기능의 코드 비교</strong></li>
+      </ol></section>
+      <section class="review-phase"><h3 class="sequence-heading">개선</h3><ol class="sequence equal-cards">
+        <li class="diagram-card application"><small class="session">4</small><img src="../../assets/images/training-pdf-optimization.png" class="pdf-art" alt=""><strong>효율화 또는 기능 확장</strong></li>
+        <li class="diagram-card system"><small class="session">5</small><img src="../../assets/images/overview-goal.png" alt=""><strong>동일 조건 재검증</strong></li>
+      </ol></section>
+    </div>
+    <p class="diagram-caption">빙글빙글 허수아비의 거리 기준과 출력 동작을 바탕으로, 조건을 유지한 채 수정 전후를 비교한다.</p></div>
+  <aside class="demo-links" aria-label="기존 웹교재 시연"><a href="../../middle/phyCom/projects/scarecrow/?page=7" target="_blank" rel="noopener">10차시 코드 분석·개선 설계 ↗</a><a href="../../middle/phyCom/projects/scarecrow/?page=8" target="_blank" rel="noopener">11차시 수정 전후 검증 ↗</a><a href="./slides.html?page=17" target="_blank" rel="noopener">프로젝트 평가 안내 ↗</a><a href="../../assets/images/scarecrow-improvement-worksheet.png" target="_blank" rel="noopener">개선 활동지 ↗</a></aside>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="새로운 생활 속 문제에 도전하기">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="bulb"><span><strong>새로운 생활 속 문제에</strong> 도전하기</span></h2></div>
+  <div class="extension-body"><div class="training-group"><h3 class="sequence-heading">학생 주도 후속 모둠 프로젝트</h3><ol class="sequence">
+        <li class="diagram-card"><img src="../../assets/images/theme-discover.png" alt=""><strong>생활 속 문제 발견</strong></li>
+        <li class="diagram-card"><img src="../../assets/images/training-pdf-algorithm.png" class="pdf-art" alt=""><strong>장치와 알고리즘 선택</strong></li>
+        <li class="diagram-card combination"><img src="../../assets/images/training-pdf-implementation.png" class="pdf-art" alt=""><strong>시스템 설계·구현</strong></li>
+        <li class="diagram-card system"><img src="../../assets/images/overview-step-6.png" alt=""><strong>검증·개선·공유</strong></li>
+      </ol></div>
+    <p class="diagram-caption">문제에 맞게 장치를 선택한다. 장치의 종류와 개수는 모둠이 결정한다.</p></div>
+  <aside class="demo-links" aria-label="기존 웹교재 시연"><a href="./slides.html?page=22" target="_blank" rel="noopener">중간 과제 설계 안내 ↗</a></aside>
+  <p class="key">11차시 이후 별도 시수로 운영한다.</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="문제 해결 과정이 평가로 이어지는 수업">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="checklist"><span>문제 해결 과정이 <strong>평가로 이어지는</strong> 수업</span></h2></div>
+  <div class="extension-body"><ol class="sequence equal-cards">
+        <li class="diagram-card"><svg class="body-pictogram checklist" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-checklist"/></svg><strong>형성평가</strong><small>이해 수준과 문제 해결 과정 확인 및 피드백</small></li>
+        <li class="diagram-card application"><img src="../../assets/images/overview-step-3.png" alt=""><strong>중간 과제</strong><small>지식 활용 및 코드 연결·조합·변형 평가</small></li>
+        <li class="diagram-card combination"><img src="../../assets/images/overview-step-6.png" alt=""><strong>후속 모둠 프로젝트</strong><small>문제 정의·설계·구현·검증·개선의 종합 평가</small></li>
+      </ol></div>
+  <p class="key">중간 과제의 수행평가 실시 여부는 성취기준과 학교 평가계획에 따라 선택한다.</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps parallel-tracks" hidden aria-label="교사 주도 AI·디지털 활용">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="ai"><span>교사 주도 <strong>AI·디지털 활용</strong></span></h2></div>
+  <div class="extension-body"><div class="training-group"><h3 class="sequence-heading">교사 · 수업자료 개발</h3><ol class="sequence equal-cards">
+        <li class="diagram-card"><img src="../../assets/images/overview-chip.png" alt=""><strong>장치 원리 시각화</strong></li>
+        <li class="diagram-card"><img src="../../assets/images/overview-step-3.png" alt=""><strong>탐구 질문과 단계별 자료 제작</strong></li>
+        <li class="diagram-card"><img src="../../assets/images/overview-laptop.png" alt=""><strong>학생 산출물의 신속한 시각화·반영</strong></li>
+        <li class="diagram-card combination"><svg class="body-pictogram checklist" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-checklist"/></svg><strong>자료 검토 및 보완</strong></li>
+      </ol></div>
+    <div class="training-group"><h3 class="sequence-heading">학생 · 학습 지원</h3><ol class="sequence equal-cards">
+        <li class="diagram-card"><svg class="body-pictogram book" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-book"/></svg><strong>이전 개념과 코드 복습</strong></li>
+        <li class="diagram-card application"><img src="../../assets/images/theme-ideas.png" alt=""><strong>해결 방법 탐색</strong></li>
+        <li class="diagram-card combination"><svg class="body-pictogram checklist" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-checklist"/></svg><strong>실행 결과 확인 및 개선</strong></li>
+      </ol></div></div>
+  <p class="key">AI·디지털 도구는 학생의 사고를 대신하는 것이 아니라 문제 해결을 지원하는 수단이다.</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="개별 장치의 탐구에서 창의적 문제 해결까지">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="growth"><span>개별 장치의 탐구에서 <strong>창의적 문제 해결까지</strong></span></h2></div>
+  <div class="extension-body"><ol class="sequence six">
+        <li class="diagram-card"><img src="../../assets/images/overview-chip.png" alt=""><strong>교과서 기본 실습</strong><small>도움닫기</small></li>
+        <li class="diagram-card application"><img src="../../assets/images/overview-step-3.png" alt=""><strong>응용 과제</strong><small>지식 확장</small></li>
+        <li class="diagram-card combination"><img src="../../assets/images/overview-step-4.png" alt=""><strong>연결·조합 과제</strong><small>문제 해결 범위 확장</small></li>
+        <li class="diagram-card system"><img src="../../assets/images/scarecrow-project.png" alt=""><strong>복합 시스템 구현·개선</strong></li>
+        <li class="diagram-card system"><img src="../../assets/images/topics-plant.png" alt=""><strong>새로운 생활 문제 해결</strong><small>지식의 전이</small></li>
+      </ol></div>
+  <p class="key">배운 지식과 기능을 연결·조합·변형하는 과정에서 컴퓨팅 사고력을 기른다.</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="2부. 수업 설계 실습">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="compass"><span>2부. <strong>수업 설계 실습</strong></span></h2></div>
+  <div class="extension-body"><ol class="sequence six milestones">
+        <li class="diagram-card"><small class="session">5분</small><svg class="body-pictogram share" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-share"/></svg><strong>모둠 활동 안내</strong></li>
+        <li class="diagram-card"><small class="session">10분</small><svg class="body-pictogram book" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-book"/></svg><strong>교과서 분석</strong></li>
+        <li class="diagram-card application"><small class="session">25분</small><img src="../../assets/images/overview-step-3.png" alt=""><strong>중간 과제 설계</strong></li>
+        <li class="diagram-card combination"><small class="session">15분</small><img src="../../assets/images/overview-step-6.png" alt=""><strong>결과 공유</strong></li>
+        <li class="diagram-card system"><small class="session">5분</small><svg class="body-pictogram checklist" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-checklist"/></svg><strong>마무리</strong></li>
+      </ol></div>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="교과서에서 수업의 연결점 찾기">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="book"><span>교과서에서 <strong>수업의 연결점</strong> 찾기</span></h2></div>
+  <div class="extension-body"><div class="training-group"><h3 class="sequence-heading">모둠별 교과서 분석</h3><ol class="sequence">
+        <li class="diagram-card"><svg class="body-pictogram book" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-book"/></svg><strong>개별 장치 기본 실습 살펴보기</strong></li>
+        <li class="diagram-card"><img src="../../assets/images/scarecrow-project.png" alt=""><strong>복합 프로젝트에 필요한 지식과 기능 분석</strong></li>
+        <li class="diagram-card application"><img src="../../assets/images/overview-step-4.png" alt=""><strong>기본 실습과 프로젝트 사이에 필요한 학습 경험 찾기</strong></li>
+      </ol></div></div>
+  <p class="key">학생들이 복합 프로젝트를 스스로 해결하려면 어떤 경험이 필요할까?</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="중간 과제 설계하기">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="puzzle"><span><strong>중간 과제</strong> 설계하기</span></h2></div>
+  <div class="extension-body"><ol class="sequence equal-cards design-grid">
+        <li class="diagram-card"><img src="../../assets/images/theme-discover.png" alt=""><strong>과제명 및 문제 상황</strong></li>
+        <li class="diagram-card"><svg class="body-pictogram book" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-book"/></svg><strong>활용할 기존 지식과 기능</strong></li>
+        <li class="diagram-card"><img src="../../assets/images/theme-ideas.png" alt=""><strong>학생이 탐구할 내용</strong></li>
+        <li class="diagram-card combination"><img src="../../assets/images/overview-step-4.png" alt=""><strong>연결·조합·변형할 코드</strong></li>
+        <li class="diagram-card application"><img src="../../assets/images/team-help.png" alt=""><strong>교사의 핵심 발문 및 지원 방법</strong></li>
+        <li class="diagram-card"><svg class="body-pictogram checklist" viewBox="0 0 64 64" aria-hidden="true"><use href="#body-checklist"/></svg><strong>평가 및 피드백 요소</strong></li>
+      </ol></div>
+  <p class="key">새로운 기능을 많이 가르치는 과제보다 배운 지식을 활용할 수 있는 과제를 설계한다.</p>
+</section>
+<section class="slide lesson diagram-slide extension document-steps" hidden aria-label="수업 아이디어 공유하기">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="share"><span><strong>수업 아이디어</strong> 공유하기</span></h2></div>
+  <div class="extension-body"><div class="training-group"><h3 class="sequence-heading">모둠별 발표 및 피드백</h3><ol class="sequence equal-cards">
+        <li class="diagram-card"><img src="../../assets/images/overview-step-3.png" alt=""><strong>어떤 중간 과제를 설계했는가?</strong></li>
+        <li class="diagram-card combination"><img src="../../assets/images/overview-step-4.png" alt=""><strong>기존 학습과 어떻게 연결되는가?</strong></li>
+        <li class="diagram-card application"><img src="../../assets/images/overview-goal.png" alt=""><strong>학생의 문제 해결 경험을 어떻게 확장하는가?</strong></li>
+      </ol></div></div>
+  <p class="key">다른 모둠의 아이디어를 자신의 수업에 적용할 가능성도 함께 탐색한다.</p>
+</section>
+<section class="slide lesson diagram-slide extension" hidden aria-label="개별 장치의 탐구에서 창의적 문제 해결까지">
+  <div class="training-heading"><h2 class="training-title" data-title-icon="growth"><span>개별 장치의 탐구에서 <strong>창의적 문제 해결까지</strong></span></h2></div>
+  <div class="extension-body"><div class="training-finale"><img src="../../assets/images/teacher-character-left.png" alt="연수 교사 캐릭터"><p>배운 지식을 연결하고,<br><mark>문제 해결의 범위를 넓히고,</mark><br>새로운 문제에 스스로 도전하는 수업</p><img src="../../assets/images/scarecrow-project.png" alt="빙글빙글 허수아비 프로젝트"></div></div>
+</section>
+</div></div></div>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <defs>
+      <g id="body-book"><circle cx="32" cy="32" r="29" fill="#d7efff"/><path d="M12 6c-2-2-5-3-9-2v14c4-1 7 0 9 2 2-2 5-3 9-2V4c-4-1-7 0-9 2zm0 0v14" transform="translate(10 10) scale(1.83)" fill="none" stroke="#0a579c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <g id="body-checklist"><circle cx="32" cy="32" r="29" fill="#d5f5ee"/><path d="M8 5H5v16h14V5h-3m-8 1V3h8v3zM8 11l1 1 2-2m2 1h3m-8 5 1 1 2-2m2 1h3" transform="translate(10 10) scale(1.83)" fill="none" stroke="#087568" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <g id="body-share"><circle cx="32" cy="32" r="29" fill="#eae3ff"/><path d="M8 11l8-4m-8 6 8 4M8 12a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm13-6a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm0 12a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" transform="translate(10 10) scale(1.83)" fill="none" stroke="#603db4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></g>
+    </defs>
+  </svg>
+</body></html>
